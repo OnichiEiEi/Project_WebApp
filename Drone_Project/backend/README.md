@@ -34,7 +34,8 @@ LOG_API_TOKEN=your-log-api-token
 ---
 
 ## Acount Testing
+```
 USERNAME=admin
 PASSWORD=123456
-
+```
 ---
