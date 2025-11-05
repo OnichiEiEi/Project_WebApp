@@ -25,10 +25,15 @@ router.get('/configs/:droneId', async (req, res) => {
   if (cached) return res.json(cached);
 
   try {
-    const configUrl = `${CONFIG_SERVER_URL}?droneId=${droneId}`;
-    const response = await axios.get(configUrl, { timeout: 8000 });
+    const response = await axios.get(CONFIG_SERVER_URL, { timeout: 8000 });
+    const droneList = response.data?.data;
 
-    const drone = response.data?.drone;
+    if (!Array.isArray(droneList)) {
+      console.error('CONFIG format error:', response.data);
+      return res.status(500).json({ error: 'Invalid config format' });
+    }
+
+    const drone = droneList.find(d => String(d.drone_id) === String(droneId));
     if (!drone) return res.status(404).json({ error: 'Drone not found' });
 
     const result = {
