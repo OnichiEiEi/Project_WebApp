@@ -7,18 +7,6 @@ This repository contains a full-stack web application for managing drone data an
   
 ---
 
-## Project Structure
-PROJECT_WEBAPP/ 
-  └── Drone_Project/ 
-    ├── frontend/ # Frontend application (e.g., React) 
-    └── backend/ # Express.js backend API 
-        ├── index.js  
-        ├── routes/ 
-        ├── .env 
-        ├── package.json
-
----
-
 ## Backend Features
 
 - `GET /configs/:droneId`  
